@@ -652,18 +652,17 @@
     // 2. 34 Фотографии для непрерывной ленты
     // Чтобы подставить свои фото: сохрани их в папку "photos/photo_1.jpg" ... "photos/photo_34.jpg" рядом с index.html
     const TOTAL_PHOTOS = 34;
-    const photoList = Array.from({ length: TOTAL_PHOTOS }, (_, i) => {
-      const idx = i + 1;
-      return {
-        id: idx,
-        // По умолчанию ищет локальный файл, при отсутствии падает на эстетичный плейсхолдер Unsplash
-        localSrc: 'photos:/Photo_' + idx + '.jpg',
-        fallbackSrc: `https://images.unsplash.com/photo-${1510000000000 + (idx * 987654)}?auto=format&fit=crop&w=600&q=80`,
-        caption: `Наш памятный кадр #${idx}`
-      };
-    });
+const photoList = [];
 
-    // 3. Плейлист на 10 треков
+for (let i = 1; i <= TOTAL_PHOTOS; i++) {
+  photoList.push({
+    id: i,
+    localSrc: './photos/Photo_' + i + '.jpg',
+    caption: 'Наш памятный кадр #' + i
+  });
+}
+    
+// 3. Плейлист на 10 треков
     const playlist = [
       { title: "Love Again", artist: "Dua Lipa", scr: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" },
       { title: "Компасы", artist: "Сергей Лазарев", scr: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" },
